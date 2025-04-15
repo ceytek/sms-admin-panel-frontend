@@ -1,0 +1,139 @@
+.ant-layout {
+  background: #f0f2f5;
+}
+
+.ant-layout-sider {
+  box-shadow: 2px 0 8px 0 rgba(29,35,41,.05);
+}
+
+.ant-layout-header {
+  height: 64px;
+  padding: 0 24px;
+  background: #fff;
+}
+
+.logo {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+.dashboard-card {
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ant-card {
+  box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 
+              0 3px 6px 0 rgba(0, 0, 0, 0.12), 
+              0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+
+.ant-statistic-title {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.45);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ant-statistic-content {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.ant-statistic-content-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-footer {
+  border-top: 1px solid #f0f0f0;
+  margin-top: auto;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.create-button {
+  background: #1890ff;
+  border-radius: 20px;
+  height: 40px;
+  padding: 0 24px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.35);
+}
+
+.create-button:hover {
+  background: #40a9ff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.45);
+}
+
+.create-button .anticon {
+  font-size: 16px;
+}
+
+/* Header Responsive Styles */
+.mobile-menu {
+  display: none;
+}
+
+.mobile-search {
+  position: fixed;
+  top: 64px;
+  left: 250px;
+  right: 0;
+  padding: 12px;
+  background: #fff;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .ant-layout-content {
+    margin: 64px 12px 12px !important;
+  }
+  
+  .dashboard-card {
+    margin-bottom: 16px;
+  }
+
+  .header-search {
+    display: none;
+  }
+
+  .desktop-menu {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .ant-layout-header {
+    padding: 0 16px !important;
+  }
+
+  .mobile-search {
+    left: 0;
+  }
+} 
