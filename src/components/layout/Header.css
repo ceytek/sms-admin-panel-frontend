@@ -1,0 +1,59 @@
+.site-header {
+  height: 64px;
+}
+
+/* Desktop styles */
+.desktop-components {
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile styles */
+.mobile-components {
+  display: none;
+  align-items: center;
+}
+
+/* Responsive breakpoints */
+@media screen and (max-width: 768px) {
+  .desktop-components {
+    display: none;
+  }
+
+  .mobile-components {
+    display: flex;
+  }
+
+  .site-header {
+    padding: 0 16px !important;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .mobile-search {
+    left: 0 !important;
+  }
+}
+
+/* Ensure proper spacing between items */
+.mobile-components .ant-space-item {
+  margin-left: 8px !important;
+}
+
+/* Animation for mobile search */
+.mobile-search {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+} 

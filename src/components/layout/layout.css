@@ -4,12 +4,30 @@
 
 .ant-layout-sider {
   box-shadow: 2px 0 8px 0 rgba(29,35,41,.05);
+  background: #fff !important;
 }
 
 .ant-layout-header {
   height: 64px;
   padding: 0 24px;
   background: #fff;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+}
+
+.ant-menu {
+  background: #fff !important;
+}
+
+.ant-menu-item {
+  color: rgba(0, 0, 0, 0.85) !important;
+}
+
+.ant-menu-item-selected {
+  color: #1890ff !important;
+}
+
+.ant-menu-item:hover {
+  color: #1890ff !important;
 }
 
 .logo {
@@ -19,6 +37,7 @@
   padding-left: 24px;
   font-size: 20px;
   font-weight: 600;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .site-layout-background {
@@ -136,4 +155,20 @@
   .mobile-search {
     left: 0;
   }
+}
+
+/* Header text and icons */
+.ant-layout-header .header-content {
+  color: #d1d1d1;
+}
+
+/* Adjust button colors for dark theme */
+.sidebar-footer .ant-btn-dashed {
+  border-color: #d9d9d9;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.sidebar-footer .ant-btn-dashed:hover {
+  border-color: #1890ff;
+  color: #1890ff;
 } 

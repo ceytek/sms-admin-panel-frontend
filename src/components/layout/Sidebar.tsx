@@ -7,7 +7,8 @@ import {
   UserOutlined,
   AppstoreOutlined,
   FileOutlined,
-  EditOutlined
+  PlusOutlined,
+  SettingOutlined
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import './layout.css';
@@ -15,7 +16,12 @@ import { CreateUserDrawer } from '../users/CreateUserDrawer';
 
 const { Sider } = Layout;
 
-export const Sidebar: React.FC = () => {
+interface SidebarProps {
+  collapsed: boolean;
+  onCollapse: (collapsed: boolean) => void;
+}
+
+export const Sidebar: React.FC<SidebarProps> = ({ collapsed, onCollapse }) => {
   const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -61,12 +67,21 @@ export const Sidebar: React.FC = () => {
       key: 'applications',
       icon: <AppstoreOutlined />,
       label: 'Applications'
+    },
+    {
+      key: 'settings',
+      icon: <SettingOutlined />,
+      label: 'Settings',
+      onClick: () => navigate('/settings'),
     }
   ];
 
   return (
     <Sider
-      width={250}
+      trigger={null}
+      collapsible
+      collapsed={collapsed}
+      onCollapse={onCollapse}
       style={{
         background: '#fff',
         boxShadow: '2px 0 8px 0 rgba(29,35,41,.05)',
@@ -92,14 +107,26 @@ export const Sidebar: React.FC = () => {
         }}
         items={menuItems}
       />
-      <div className="sidebar-footer">
+      <div className="sidebar-footer" style={{ padding: '16px' }}>
         <Button
-          type="primary"
-          icon={<EditOutlined />}
-          className="create-button"
+          type="dashed"
+          icon={<PlusOutlined />}
           onClick={() => setDrawerOpen(true)}
+          style={{
+            width: '90%',
+            borderStyle: 'dashed',
+            borderWidth: '1px',
+            borderRadius: '6px',
+            padding: '4px 15px',
+            height: 'auto',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            margin: '0 auto'
+          }}
         >
-          Oluştur
+          Create project
         </Button>
       </div>
       <CreateUserDrawer 

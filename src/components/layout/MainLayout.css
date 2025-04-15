@@ -1,0 +1,31 @@
+.main-layout {
+  min-height: 100vh;
+}
+
+.site-layout {
+  position: relative;
+  transition: all 0.2s;
+}
+
+.site-content {
+  margin: 88px 24px 24px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 4px;
+  min-height: calc(100vh - 112px);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .site-content {
+    margin: 88px 16px 16px;
+    padding: 16px;
+  }
+}
+
+/* Ensure content is scrollable */
+.site-layout {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+} 
