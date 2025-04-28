@@ -9,8 +9,7 @@ const LOGIN_MUTATION = gql`
       user {
         id
         username
-        email
-        role
+       
       }
       error
     }

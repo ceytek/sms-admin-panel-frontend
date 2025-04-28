@@ -17,9 +17,12 @@ export const phoneRules: Rule[] = [
     message: 'GSM numarası zorunludur',
   },
   {
-    pattern: /^05[0-9]{9}$/,
-    message: 'Geçerli bir GSM numarası giriniz (05XX XXX XX XX)',
-  },
+    validator: async (_, value) => {
+      if (value && value.replace(/\D/g, '').length < 10) {
+        throw new Error('Telefon numarası en az 10 karakter olmalıdır');
+      }
+    }
+  }
 ];
 
 export const PhoneInput: React.FC<PhoneInputProps> = ({
@@ -71,22 +74,17 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    // Sadece rakamları al
     const numbersOnly = newValue.replace(/\D/g, '');
     
-    // Maksimum 10 rakam (başındaki 05 hariç)
-    if (numbersOnly.length <= 10) {
-      const formatted = formatPhoneNumber(numbersOnly);
-      setInputValue(formatted);
-      
-      if (onChange) {
-        // Add the "05" prefix back when sending the value up
-        onChange('05' + numbersOnly);
-      }
+    const formatted = formatPhoneNumber(numbersOnly);
+    setInputValue(formatted);
+    
+    if (onChange) {
+      onChange('05' + numbersOnly);
     }
   };
 
-  const rules: Rule[] = required ? phoneRules : [phoneRules[1]];
+  const rules: Rule[] = required ? phoneRules : [];
 
   return (
     <Form.Item

@@ -1,28 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import 'antd/dist/reset.css';
+import App from './App';
+import { ConfigProvider } from 'antd';
+import trTR from 'antd/locale/tr_TR';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const App = () => {
-  return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </HashRouter>
-  );
-};
-
 root.render(
   <React.StrictMode>
-    <App />
+    <ConfigProvider locale={trTR}>
+      <App />
+    </ConfigProvider>
   </React.StrictMode>
 ); 

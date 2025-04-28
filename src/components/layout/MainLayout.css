@@ -28,4 +28,24 @@
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+.main-layout .ant-layout-sider {
+  position: relative;
+}
+
+.main-layout .ant-layout-sider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1px;
+  height: 64px; /* Header height */
+  background-color: #EDEAE9;
+  z-index: 1000;
+}
+
+/* Remove the original border */
+.main-layout .ant-layout-sider {
+  border-right: none !important;
 } 

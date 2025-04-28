@@ -4,10 +4,13 @@ import {
   MenuOutlined, 
   DashboardOutlined,
   UserOutlined,
-  SettingOutlined 
+  SettingOutlined,
+  PlusOutlined,
+  ToolOutlined
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { Header } from './Header';
+import { CreateUserDrawer } from '../users/CreateUserDrawer';
 import './MainLayout.css';
 
 const { Content, Sider } = Layout;
@@ -18,6 +21,7 @@ interface MainLayoutProps {
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const [collapsed, setCollapsed] = useState(window.innerWidth <= 768);
+  const [drawerVisible, setDrawerVisible] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,11 +57,12 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           left: 0,
           top: 0,
           zIndex: 999,
-          borderRight: '1px solid #EDEAE9',
+          display: 'flex',
+          flexDirection: 'column'
         }}
       >
         <div style={{
-          height: '50px',
+          height: '63px',
           borderBottom: '1px solid #EDEAE9',
           display: 'flex',
           alignItems: 'center',
@@ -93,28 +98,70 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         <Menu
           theme="light"
           mode="inline"
-          defaultSelectedKeys={['1']}
-          style={{ backgroundColor: '#F6F8F9', borderRight: 'none' }}
+          defaultSelectedKeys={['dashboard']}
+          style={{ backgroundColor: '#F6F8F9', borderRight: 'none', flex: 1 }}
           items={[
             {
-              key: '1',
+              key: 'dashboard',
               icon: <DashboardOutlined />,
               label: 'Dashboard',
-              onClick: () => navigate('/'),
+              onClick: () => navigate('/dashboard'),
             },
             {
-              key: '2',
+              key: 'users',
               icon: <UserOutlined />,
               label: 'Users',
               onClick: () => navigate('/users'),
             },
             {
-              key: '3',
+              key: 'service-management',
+              icon: <ToolOutlined />,
+              label: 'Servis Yönetimi',
+              onClick: () => navigate('/service-management'),
+            },
+            {
+              key: 'allusers',
+              icon: <UserOutlined />,
+              label: 'Kullanıcı İşlemleri',
+              onClick: () => navigate('/allusers'),
+            },
+            {
+              key: 'settings',
               icon: <SettingOutlined />,
               label: 'Settings',
               onClick: () => navigate('/settings'),
             },
           ]}
+        />
+        <div style={{
+          padding: '16px',
+          borderTop: '1px solid #EDEAE9',
+          backgroundColor: '#F6F8F9',
+          marginTop: 'auto'
+        }}>
+          <Button
+            type="dashed"
+            icon={<PlusOutlined style={{ color: '#6B6C6F' }} />}
+            onClick={() => setDrawerVisible(true)}
+            style={{
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: collapsed ? 'center' : 'flex-start',
+              height: '40px',
+              color: '#6B6C6F',
+              borderColor: '#D9D9D9',
+              backgroundColor: 'transparent',
+              boxShadow: 'none'
+            }}
+          >
+            {!collapsed && 'Create Project'}
+          </Button>
+        </div>
+
+        <CreateUserDrawer
+          open={drawerVisible}
+          onClose={() => setDrawerVisible(false)}
         />
       </Sider>
       <Layout style={{ marginLeft: collapsed ? 80 : 280, transition: 'all 0.2s' }}>

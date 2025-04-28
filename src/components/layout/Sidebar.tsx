@@ -8,7 +8,8 @@ import {
   AppstoreOutlined,
   FileOutlined,
   PlusOutlined,
-  SettingOutlined
+  SettingOutlined,
+  ToolOutlined
 } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import './layout.css';
@@ -27,46 +28,28 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, onCollapse }) => {
 
   const menuItems = [
     {
-      key: 'dashboards',
+      key: 'dashboard',
       icon: <DashboardOutlined />,
-      label: 'Dashboards',
-      children: [
-        {
-          key: 'analytics',
-          icon: <BarChartOutlined />,
-          label: 'Analytics'
-        },
-        {
-          key: 'commerce',
-          icon: <ShoppingOutlined />,
-          label: 'Commerce'
-        },
-        {
-          key: 'sales',
-          icon: <BarChartOutlined />,
-          label: 'Sales'
-        },
-        {
-          key: 'minimal',
-          icon: <DashboardOutlined />,
-          label: 'Minimal'
-        }
-      ]
+      label: 'Dashboard',
+      onClick: () => navigate('/dashboard'),
     },
     {
-      key: 'crm',
+      key: 'users',
       icon: <UserOutlined />,
-      label: 'CRM'
+      label: 'Users',
+      onClick: () => navigate('/users'),
     },
     {
-      key: 'pages',
-      icon: <FileOutlined />,
-      label: 'Pages'
+      key: 'kullanici-islemleri',
+      icon: <UserOutlined />,
+      label: 'Kullanıcı İşlemleri',
+      onClick: () => navigate('/allusers'),
     },
     {
-      key: 'applications',
-      icon: <AppstoreOutlined />,
-      label: 'Applications'
+      key: 'servis-yonetimi',
+      icon: <ToolOutlined />,
+      label: 'Servis Yönetimi',
+      onClick: () => navigate('/service-management'),
     },
     {
       key: 'settings',
@@ -99,11 +82,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, onCollapse }) => {
       </div>
       <Menu
         mode="inline"
-        defaultSelectedKeys={['minimal']}
-        defaultOpenKeys={['dashboards']}
+        defaultSelectedKeys={['dashboard']}
         style={{ 
           flex: 1,
-          borderRight: 0 
+          borderRight: 0,
+          height: 'calc(100vh - 120px)',
+          overflowY: 'auto'
         }}
         items={menuItems}
       />
